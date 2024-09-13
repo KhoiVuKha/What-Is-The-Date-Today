@@ -48,10 +48,21 @@ def get_air_quality_data(lat, lon):
     if response.status_code == 200:
         data = response.json()
         air_quality_index = data['list'][0]['main']['aqi']
+        # Return the AQI description based on the index
+        return air_quality_index, get_aqi_description(air_quality_index)
     else:
-        air_quality_index = "Unavailable"
-    
-    return air_quality_index
+        return "Unavailable", "Unavailable"
+
+# Function to get description for the Air Quality Index
+def get_aqi_description(aqi):
+    descriptions = {
+        1: "Good: Air quality is considered satisfactory, and air pollution poses little or no risk.",
+        2: "Fair: Air quality is acceptable; however, there may be a risk for some people.",
+        3: "Moderate: Air quality is acceptable; however, there may be a risk for some people, especially those with respiratory or heart conditions.",
+        4: "Poor: Air quality is poor and poses a health risk for everyone, especially those with respiratory or heart conditions.",
+        5: "Very Poor: Air quality is very poor, and everyone is likely to be affected, with significant health effects."
+    }
+    return descriptions.get(aqi, "Unavailable")
 
 # Coordinates for the cities
 cities = {
@@ -75,8 +86,8 @@ with open("README.md", "w") as f:
     # Write weather and air quality data for each city in a well-formatted way
     for city, coords in cities.items():
         weather_description, temperature = get_weather_data(city)
-        air_quality_index = get_air_quality_data(coords['lat'], coords['lon'])
+        air_quality_index, air_quality_description = get_air_quality_data(coords['lat'], coords['lon'])
         
         f.write(f"\n### {city}:\n")
         f.write(f"- Weather: {weather_description}, Temperature: {temperature}°C\n")
-        f.write(f"- Air Quality Index: {air_quality_index}\n")
+        f.write(f"- Air Quality Index: {air_quality_index} ({air_quality_description})\n")
