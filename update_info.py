@@ -49,7 +49,7 @@ def get_weather_and_air_quality(city):
     return f"Weather: {weather_description}, Temperature: {temperature}°C, Air Quality Index: {air_quality_index}"
 
 # List of cities to get the weather and air quality data for
-cities = ["Hưng Yên", "Hà Nội", "Đà Nẵng", "Ho Chi Minh City"]
+cities = ["Hung Yen", "Hanoi", "Da Nang", "Ho Chi Minh City"]
 
 # Open the README.md file in write mode ("w") to overwrite the content
 with open("README.md", "w") as f:
