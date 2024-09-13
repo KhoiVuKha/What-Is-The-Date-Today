@@ -1,36 +1,47 @@
-name: GitHub Self-Updating Repository Demo
+name: Update Date, Lunar Date, Weather, and Air Quality Info
 
 on:
-  # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
+  # Schedule the workflow to run daily at midnight (00:00 UTC)
   schedule:
-    # The shortest interval you can run scheduled workflows is once every 5 minutes.
-    # Note: The schedule event can be delayed during periods of high loads of GitHub Actions workflow runs.
-    # High load times include the start of every hour.
-    # To decrease the chance of delay, schedule your workflow to run at a different time of the hour.
+    # Runs at 00:00 UTC every day
+    # - cron: "0 0 * * *"
     # Every 5 minutes.
     # - cron: '*/5 * * * *'
-    # At the beginning of every day.
     - cron: '*/5 * * * *'
 
-# on: [push]
-
 jobs:
-  report:
+  update-readme:
     runs-on: ubuntu-latest
+
     steps:
+      # Step 1: Check out the repository code
       - name: Check out repository code
-        # https://github.com/actions/checkout/tree/v3.0.2
         uses: actions/checkout@v3
-      - name: Modify date and time
+
+      # Step 2: Set up Python environment
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x' # Using Python version 3.x
+
+      # Step 3: Install required dependencies (requests, lunarcalendar)
+      - name: Install dependencies
         run: |
-          date > README.md
-          cat README.md
-        timeout-minutes: 2
-      - name: Push to repository
+          pip install requests lunarcalendar
+
+      # Step 4: Run the Python script to update the README.md file with data
+      - name: Run update_info.py
+        run: python update_info.py
+        env:
+          # Pass the OpenWeatherMap API key from GitHub Secrets as an environment variable
+          OPENWEATHERMAP_API_KEY: ${{ secrets.OPENWEATHERMAP_API_KEY }}
+
+      # Step 5: Commit and push changes to the repository
+      - name: Push changes to repository
         run: |
-          git config --global user.name "Khoi Vu"
-          git config --global user.email "KhoiVuKha@users.noreply.github.com"
-          now=$(date)
-          git add -A
-          git commit -m "Auto Push on $now"
-          git push
+          git config --global user.name "Khoi Vu" # Set git user name
+          git config --global user.email "KhoiVuKha@users.noreply.github.com" # Set git user email
+          git add README.md # Add changes to the README.md file
+          now=$(date) # Get the current date and time
+          git commit -m "Auto update: $now" # Commit changes with a message
+          git push # Push changes to the repository
