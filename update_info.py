@@ -24,14 +24,26 @@ def get_weather_and_air_quality(city):
     weather_url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}&units=metric"
     air_quality_url = f"http://api.openweathermap.org/data/2.5/air_pollution?q={city}&appid={API_KEY}"
 
-    # Fetch the weather and air quality data from the API
-    weather_data = requests.get(weather_url).json()
-    air_quality_data = requests.get(air_quality_url).json()
-
-    # Extract weather description, temperature, and air quality index
-    weather_description = weather_data['weather'][0]['description']
-    temperature = weather_data['main']['temp']
-    air_quality_index = air_quality_data['list'][0]['main']['aqi']
+    # Fetch the weather data from the API
+    weather_response = requests.get(weather_url)
+    if weather_response.status_code == 200:
+        weather_data = weather_response.json()
+        weather_description = weather_data['weather'][0]['description']
+        temperature = weather_data['main']['temp']
+    else:
+        weather_description = "Unavailable"
+        temperature = "Unavailable"
+    
+    # Fetch the air quality data from the API
+    air_quality_response = requests.get(air_quality_url)
+    if air_quality_response.status_code == 200:
+        air_quality_data = air_quality_response.json()
+        if 'list' in air_quality_data and len(air_quality_data['list']) > 0:
+            air_quality_index = air_quality_data['list'][0]['main']['aqi']
+        else:
+            air_quality_index = "Unavailable"
+    else:
+        air_quality_index = "Unavailable"
 
     # Return formatted string with the weather and air quality information
     return f"Weather: {weather_description}, Temperature: {temperature}°C, Air Quality Index: {air_quality_index}"
