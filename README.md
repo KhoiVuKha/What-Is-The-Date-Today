@@ -1,18 +1,22 @@
 # Daily Report
 ## Date Information
-- **Current Date**: 2024-09-13 04:50:13
+- **Current Date**: 2024-09-13 07:13:47
 - **Lunar Date**: 11/8/2024 (Lunar)
 
 ## Weather and Air Quality Information
 
 ### Hung Yen:
-- Weather: Few clouds, Temperature: 32.71°C, Air Quality Index: Unavailable
+- Weather: Clear sky, Temperature: 32.55°C
+- Air Quality Index: 5
 
 ### Hanoi:
-- Weather: Few clouds, Temperature: 32°C, Air Quality Index: Unavailable
+- Weather: Scattered clouds, Temperature: 32°C
+- Air Quality Index: 4
 
 ### Da Nang:
-- Weather: Scattered clouds, Temperature: 30.99°C, Air Quality Index: Unavailable
+- Weather: Scattered clouds, Temperature: 31.99°C
+- Air Quality Index: 2
 
 ### Ho Chi Minh City:
-- Weather: Broken clouds, Temperature: 31.71°C, Air Quality Index: Unavailable
+- Weather: Scattered clouds, Temperature: 31.15°C
+- Air Quality Index: 1
