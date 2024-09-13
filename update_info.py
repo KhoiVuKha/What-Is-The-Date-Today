@@ -51,10 +51,11 @@ def get_weather_and_air_quality(city):
 # List of cities to get the weather and air quality data for
 cities = ["Hưng Yên", "Hà Nội", "Đà Nẵng", "Ho Chi Minh City"]
 
-# Open the README.md file and append the gathered information
-with open("README.md", "a") as f:
+# Open the README.md file in write mode ("w") to overwrite the content
+with open("README.md", "w") as f:
     # Write the current Gregorian date and time
-    f.write("\n## Date Information\n")
+    f.write("# Daily Report\n")
+    f.write("## Date Information\n")
     f.write(f"- **Current Date**: {get_current_date()}\n")
     f.write(f"- **Lunar Date**: {get_lunar_date()}\n")
     
