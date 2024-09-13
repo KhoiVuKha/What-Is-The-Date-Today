@@ -28,7 +28,7 @@ def get_weather_and_air_quality(city):
     weather_response = requests.get(weather_url)
     if weather_response.status_code == 200:
         weather_data = weather_response.json()
-        weather_description = weather_data['weather'][0]['description']
+        weather_description = weather_data['weather'][0]['description'].capitalize()
         temperature = weather_data['main']['temp']
     else:
         weather_description = "Unavailable"
@@ -54,12 +54,14 @@ cities = ["Hưng Yên", "Hà Nội", "Đà Nẵng", "Ho Chi Minh City"]
 # Open the README.md file and append the gathered information
 with open("README.md", "a") as f:
     # Write the current Gregorian date and time
-    f.write(f"\nCurrent Date: {get_current_date()}\n")
+    f.write("\n## Date Information\n")
+    f.write(f"- **Current Date**: {get_current_date()}\n")
+    f.write(f"- **Lunar Date**: {get_lunar_date()}\n")
     
-    # Write the current Lunar date
-    f.write(f"Lunar Date: {get_lunar_date()}\n")
+    # Add a separator for readability
+    f.write("\n## Weather and Air Quality Information\n")
     
-    # Write weather and air quality data for each city
+    # Write weather and air quality data for each city in a well-formatted way
     for city in cities:
-        f.write(f"{city}:\n{get_weather_and_air_quality(city)}\n")
-
+        f.write(f"\n### {city}:\n")
+        f.write(f"- {get_weather_and_air_quality(city)}\n")
