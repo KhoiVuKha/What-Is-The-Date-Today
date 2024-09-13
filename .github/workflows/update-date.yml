@@ -15,21 +15,27 @@ jobs:
   update-readme:
     runs-on: ubuntu-latest
 
+    # Set a timeout for the entire job
+    timeout-minutes: 5  # Adjust this based on your expected runtime
+
     steps:
       # Step 1: Check out the repository code
       - name: Check out repository code
         uses: actions/checkout@v3
+        timeout-minutes: 2  # Timeout for this step
 
       # Step 2: Set up Python environment
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
           python-version: '3.x' # Using Python version 3.x
+        timeout-minutes: 2
 
       # Step 3: Install required dependencies (requests, lunarcalendar)
       - name: Install dependencies
         run: |
           pip install requests lunarcalendar
+        timeout-minutes: 2
 
       # Step 4: Run the Python script to update the README.md file with data
       - name: Run update_info.py
@@ -37,6 +43,7 @@ jobs:
         env:
           # Pass the OpenWeatherMap API key from GitHub Secrets as an environment variable
           OPENWEATHERMAP_API_KEY: ${{ secrets.OPENWEATHERMAP_API_KEY }}
+        timeout-minutes: 5
 
       # Step 5: Commit and push changes to the repository
       - name: Push changes to repository
@@ -47,3 +54,4 @@ jobs:
           now=$(date) # Get the current date and time
           git commit -m "Auto update: $now" # Commit changes with a message
           git push # Push changes to the repository
+        timeout-minutes: 2
