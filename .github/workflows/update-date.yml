@@ -7,7 +7,8 @@ on:
     # - cron: "0 0 * * *"
     # Every 5 minutes.
     # - cron: '*/5 * * * *'
-    - cron: "0 0 * * *"
+    # Schedule the workflow to run daily at 00:00 Vietnam time (17:00 UTC)
+    - cron: "0 17 * * *"
 
 # on: [push]
 
