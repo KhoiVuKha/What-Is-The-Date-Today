@@ -2,11 +2,15 @@ import requests
 from lunarcalendar import Converter, Solar
 import datetime
 import os
+import pytz
 
-# Function to get the current Gregorian date and time
+# Function to get the current Gregorian date and time in both UTC and Vietnam time
 def get_current_date():
-    today = datetime.datetime.now()
-    return today.strftime("%Y-%m-%d %H:%M:%S")
+    now_utc = datetime.datetime.now(pytz.utc)
+    vietnam_tz = pytz.timezone('Asia/Ho_Chi_Minh')
+    now_vietnam = now_utc.astimezone(vietnam_tz)
+    
+    return now_utc.strftime("%Y-%m-%d %H:%M:%S (UTC)"), now_vietnam.strftime("%Y-%m-%d %H:%M:%S (Vietnam Time)")
 
 # Function to get the current Lunar date
 def get_lunar_date():
