@@ -10,7 +10,7 @@ def get_current_date():
     vietnam_tz = pytz.timezone('Asia/Ho_Chi_Minh')
     now_vietnam = now_utc.astimezone(vietnam_tz)
     
-    return now_utc.strftime("%Y-%m-%d %H:%M:%S (UTC)"), now_vietnam.strftime("%Y-%m-%d %H:%M:%S (Vietnam Time)")
+    return now_utc.strftime("%Y-%m-%d %H:%M:%S (UTC)"), now_vietnam.strftime("%Y-%m-%d %H:%M:%S (UTC+7)")
 
 # Function to get the current Lunar date
 def get_lunar_date():
