@@ -1,15 +1,15 @@
 name: Update Date, Lunar Date, Weather, and Air Quality Info
 
-on:
-  # Schedule the workflow to run daily at midnight (00:00 UTC)
-  schedule:
-    # Runs at 00:00 UTC every day
-    # - cron: "0 0 * * *"
-    # Every 5 minutes.
-    # - cron: '*/5 * * * *'
-    - cron: "0 0 * * *"
+# on:
+#   # Schedule the workflow to run daily at midnight (00:00 UTC)
+#   schedule:
+#     # Runs at 00:00 UTC every day
+#     # - cron: "0 0 * * *"
+#     # Every 5 minutes.
+#     # - cron: '*/5 * * * *'
+#     - cron: "0 0 * * *"
 
-# on: [push]
+on: [push]
 
 jobs:
   update-readme:
