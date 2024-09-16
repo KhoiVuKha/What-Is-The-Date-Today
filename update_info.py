@@ -81,7 +81,13 @@ with open("README.md", "w") as f:
     # Write the current Gregorian date and time
     f.write("# Daily Report\n")
     f.write("## Date Information\n")
-    f.write(f"- **Current Date**: {get_current_date()}\n")
+    
+    # Get both UTC and Vietnam times
+    utc_time, vietnam_time = get_current_date()
+    f.write(f"- **Current UTC Time**: {utc_time}\n")
+    f.write(f"- **Current Vietnam Time**: {vietnam_time}\n")
+    
+    # Lunar date
     f.write(f"- **Lunar Date**: {get_lunar_date()}\n")
     
     # Add a separator for readability
