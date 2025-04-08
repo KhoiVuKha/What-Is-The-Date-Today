@@ -1,23 +1,23 @@
 # Daily Report
 ## Date Information
-- **Current UTC Time**: 2025-04-07 01:03:31 (UTC)
-- **Current Vietnam Time**: 2025-04-07 08:03:31 (UTC+7)
-- **Lunar Date**: 10/3/2025 (Lunar)
+- **Current UTC Time**: 2025-04-08 01:01:44 (UTC)
+- **Current Vietnam Time**: 2025-04-08 08:01:44 (UTC+7)
+- **Lunar Date**: 11/3/2025 (Lunar)
 
 ## Weather and Air Quality Information
 
 ### Hung Yen:
-- Weather: Overcast clouds, Temperature: 20.81°C
-- Air Quality Index: 3 (Moderate: Air quality is acceptable; however, there may be a risk for some people, especially those with respiratory or heart conditions.)
+- Weather: Overcast clouds, Temperature: 22.59°C
+- Air Quality Index: 5 (Very Poor: Air quality is very poor, and everyone is likely to be affected, with significant health effects.)
 
 ### Hanoi:
-- Weather: Overcast clouds, Temperature: 20°C
-- Air Quality Index: 2 (Fair: Air quality is acceptable; however, there may be a risk for some people.)
+- Weather: Overcast clouds, Temperature: 22°C
+- Air Quality Index: 5 (Very Poor: Air quality is very poor, and everyone is likely to be affected, with significant health effects.)
 
 ### Da Nang:
-- Weather: Broken clouds, Temperature: 24.99°C
-- Air Quality Index: 2 (Fair: Air quality is acceptable; however, there may be a risk for some people.)
+- Weather: Scattered clouds, Temperature: 25.99°C
+- Air Quality Index: 3 (Moderate: Air quality is acceptable; however, there may be a risk for some people, especially those with respiratory or heart conditions.)
 
 ### Ho Chi Minh City:
-- Weather: Clear sky, Temperature: 28.37°C
-- Air Quality Index: 4 (Poor: Air quality is poor and poses a health risk for everyone, especially those with respiratory or heart conditions.)
+- Weather: Broken clouds, Temperature: 28.93°C
+- Air Quality Index: 5 (Very Poor: Air quality is very poor, and everyone is likely to be affected, with significant health effects.)
